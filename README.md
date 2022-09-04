@@ -1,6 +1,7 @@
 # fhs-gamedev-2022
 The collaborative project for the Fairview Game Development Club.
 
+
 INSTRUCTIONS TO SET UP DEVELOPMENT ON YOUR COMPUTER
 
 1. Download Unity Hub at: https://unity3d.com/get-unity/download
@@ -11,3 +12,4 @@ INSTRUCTIONS TO SET UP DEVELOPMENT ON YOUR COMPUTER
 
 NOTE: when you go to commit for the first time, you'll get a popup saying that you need to fork the repository. Click it to fork it, which wi
 HI GAMERSS
+
