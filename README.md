@@ -2,6 +2,7 @@
 The collaborative project for the Fairview Game Development Club.
 
 
+
 INSTRUCTIONS TO SET UP DEVELOPMENT ON YOUR COMPUTER
 
 1. Download Unity Hub at: https://unity3d.com/get-unity/download
