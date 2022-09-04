@@ -36,3 +36,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Game/Logs/shadercompiler-UnityShaderCompiler.exe1.log
+*.dwlt
