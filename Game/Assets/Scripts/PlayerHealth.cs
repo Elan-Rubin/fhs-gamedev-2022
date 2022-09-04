@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private int _health;
+    public int Health { get { return _health; } }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
