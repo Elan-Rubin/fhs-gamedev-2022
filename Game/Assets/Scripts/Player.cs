@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         if (_playerMovement == null) _playerMovement = GetComponent<PlayerMovement>();
         if (_playerHealth == null) _playerHealth = GetComponent<PlayerHealth>();
-        Debug.Log("hi");
+        Debug.Log("hi!");
     }
 
     void Update()
