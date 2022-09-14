@@ -37,4 +37,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-*.log
+# this might work?
+**/*.log
+**/*.dwlt
