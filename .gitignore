@@ -38,3 +38,4 @@ sysinfo.txt
 *.unitypackage
 
 *.log
+Game/.DS_Store
