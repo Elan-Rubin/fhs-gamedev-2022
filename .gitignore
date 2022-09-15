@@ -38,3 +38,6 @@ sysinfo.txt
 *.unitypackage
 
 *.log
+**/*.log
+**/*.dwlt 
+#Does this actually make it ignore .dwlt and .log files? --Will Cash (flameofanor)
