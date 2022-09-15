@@ -37,7 +37,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-*.log
 **/*.log
-**/*.dwlt 
-#Does this actually make it ignore .dwlt and .log files? --Will Cash (flameofanor)
+**/*.dwlt
+Game/.DS_Store
+
