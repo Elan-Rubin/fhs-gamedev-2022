@@ -8,15 +8,7 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     private int _health; // backing field for Health (can mostly be ignored)
     public HealthBar bar; // health bar, if it exists
-    public int startingHealth;
-
-    void Start()
-    {
-        _health = startingHealth;
-    }
-
-    public bool takeDamage = false; //TODO: Temporary for testing
-
+    
     /// <summary>
     /// The current amount of health
     /// Automatically clamped between 0 and <see cref="maxHealth"/>
@@ -33,29 +25,11 @@ public class Damageable : MonoBehaviour
         }
     }
 
-   
-
     /// <summary>
     /// The maximum health this can hold
     /// </summary>
     public int maxHealth { get; private set; } // don't allow others to set this
 
-
-    void Awake() // TODO: Temporary for testing
-    {
-        maxHealth = 20;
-        Health = maxHealth;
-    }
-    
-    void Update() // TODO: Temporary for testing
-    {
-        if (takeDamage)
-        {
-            TakeDamage(1);
-            takeDamage = false;
-        }
-    }
-    
     /// <summary>
     /// Attempts to take damage
     /// </summary>
@@ -68,7 +42,7 @@ public class Damageable : MonoBehaviour
         Health -= damage;
 
         // update the health bar, if it exists
-        if (bar != null) bar.updateBar(this);
+        if (bar != null) bar.UpdateBar(this);
 
         return oldHealth - Health;
     }

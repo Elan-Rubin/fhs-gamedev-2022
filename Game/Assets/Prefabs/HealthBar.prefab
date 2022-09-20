@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 233.8889, y: 58.5244}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5050235585774404067
 Canvas:
@@ -93,17 +93,17 @@ MonoBehaviour:
   slider: {fileID: 5050235586454381953}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.8113208, g: 0.09392345, b: 0, a: 1}
-    key1: {r: 0.18444741, g: 1, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 1, g: 0.0916364, b: 0, a: 1}
+    key1: {r: 1, g: 0.9263607, b: 0, a: 1}
+    key2: {r: 0.18444741, g: 1, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
+    ctime1: 33539
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 5050235585999856353}
 --- !u!1 &5050235585999856355
