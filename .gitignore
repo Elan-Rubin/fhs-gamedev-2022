@@ -4,6 +4,7 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+UserSettings/
 
 # Visual Studio cache directory
 .vs/
@@ -36,4 +37,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-*.log
+**/*.log
+**/*.dwlt
+Game/.DS_Store
+
