@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     [Header("Player scripts")]
     [Tooltip("The player's movement script.")]
     [SerializeField] private PlayerMovement _playerMovement;
-    [Tooltip("The player's health script.")]
-/*    [SerializeField] private PlayerHealth _playerHealth;*/
     [Space(5)]
 
     private static Player _instance;
@@ -23,12 +21,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         if (_playerMovement == null) _playerMovement = GetComponent<PlayerMovement>();
-/*        if (_playerHealth == null) _playerHealth = GetComponent<PlayerHealth>();*/
         Debug.Log("hi!");
     }
 
     void Update()
     {
-
+        
     }
 }

@@ -1,18 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private Damageable _tracking;
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
+    
     
     // Start is called before the first frame update
     void Start()
-    {   
-        _tracking = GetComponent<Damageable>(); // find the damagable thing to to track
-        _tracking.bar = this;
+    {
+        fill.color = gradient.Evaluate(slider.normalizedValue); // Make sure it starts green, not red
     }
     
-  
-    public void updateBar() {
+    public void updateBar(Damageable tracking) {
         // update the health bar
+        slider.maxValue = tracking.maxHealth;
+        slider.value = tracking.Health;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
