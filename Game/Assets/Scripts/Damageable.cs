@@ -7,6 +7,12 @@ public class Damageable : MonoBehaviour
 {
     private int _health; // backing field for Health (can mostly be ignored)
     public HealthBar bar; // health bar, if it exists
+    public int startingHealth;
+
+    void Start()
+    {
+        _health = startingHealth;
+    }
 
     /// <summary>
     /// The current amount of health
@@ -23,6 +29,8 @@ public class Damageable : MonoBehaviour
             _health = Mathf.Clamp(value, 0, maxHealth); // clamp health within 0 and max
         }
     }
+
+   
 
     /// <summary>
     /// The maximum health this can hold

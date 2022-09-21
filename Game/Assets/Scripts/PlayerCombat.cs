@@ -6,8 +6,10 @@ public class PlayerCombat : MonoBehaviour
 {
     public float attackrate = 1.2f;
     public float attackradius = 1f;
+    public LayerMask enemyLayer;
     // How long it takes to attack
     private float attacksSec;
+    public int damage = 13;
 
     private float timeLastAttacked;
     // Start is called before the first frame update
@@ -21,10 +23,15 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && timeLastAttacked + attacksSec <= Time.time)
         {
+            // attack animation when available
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackradius);
             foreach (Collider2D hit in hits)
             {
-                Debug.Log(hit.gameObject.name);
+                if (hit.gameObject.layer == Mathf.Log(enemyLayer, 2)) // find out if hit an enemy
+                {
+                    hit.GetComponent<Damageable>().TakeDamage(damage);
+                   // Debug.Log("hit");
+                }
             }
             timeLastAttacked = Time.time;
         }
