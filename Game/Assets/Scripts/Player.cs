@@ -29,6 +29,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
