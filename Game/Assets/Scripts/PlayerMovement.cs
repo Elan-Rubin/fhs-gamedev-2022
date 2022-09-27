@@ -18,13 +18,19 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up,jumpdistance);
         Debug.Log(hit.collider);
-        if (UnityEngine.Input.GetAxisRaw("Vertical")>0.1f && hit.collider!=null && canJump == true)
+        if ((UnityEngine.Input.GetAxisRaw("Vertical")>0.1f || Input.GetKeyDown(KeyCode.Space)) && hit.collider!=null && canJump == true)
         {
             StartCoroutine(JumpDelay());
             rigidBody.velocity += Vector2.up * jumpHeight;
         }
         rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal"), rigidBody.velocity.y);
         //rigidBody.velocity += Vector2.right * runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Respawn"){
+            transform.position = new Vector2(0, 0);
+        }
     }
 
     IEnumerator JumpDelay()
