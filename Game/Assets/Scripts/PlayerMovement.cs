@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             wallJumpSideDistNow = left.collider != null ? (wallJumpDistSide) : (wallJumpDistSide * -1);
             // Debug.Log(wallJumpSideDistNow);
         }
-        rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal"), rigidBody.velocity.y);//set velocity of rigidbody based 
+        rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal") + wallJumpSideDistNow, rigidBody.velocity.y);//set velocity of rigidbody based 
     }                                                                                                                 //on horizontal input
     private void OnTriggerEnter2D(Collider2D collision)//simple respawn system TODO:move to it's own script
     {
