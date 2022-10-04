@@ -5,19 +5,14 @@ using UnityEngine;
 /// </summary>?
 public class Damageable : MonoBehaviour
 {
+    [SerializeField]
     private int _health; // backing field for Health (can mostly be ignored)
     public HealthBar bar; // health bar, if it exists
-    public int startingHealth;
-
-    void Start()
-    {
-        _health = startingHealth;
-    }
-
+    
     /// <summary>
     /// The current amount of health
     /// Automatically clamped between 0 and <see cref="maxHealth"/>
-    /// </summary>_tr
+    /// </summary>
     public int Health
     {
         get
@@ -30,14 +25,11 @@ public class Damageable : MonoBehaviour
         }
     }
 
-   
-
     /// <summary>
     /// The maximum health this can hold
     /// </summary>
     public int maxHealth { get; private set; } // don't allow others to set this
 
-    
     /// <summary>
     /// Attempts to take damage
     /// </summary>
@@ -50,7 +42,7 @@ public class Damageable : MonoBehaviour
         Health -= damage;
 
         // update the health bar, if it exists
-        if (bar != null) bar.updateBar();
+        if (bar != null) bar.UpdateBar(this);
 
         return oldHealth - Health;
     }
