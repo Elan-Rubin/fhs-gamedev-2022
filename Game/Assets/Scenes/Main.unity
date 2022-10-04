@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 956505879}
   - component: {fileID: 956505878}
   - component: {fileID: 956505877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 1157307523}
   - component: {fileID: 1157307522}
   - component: {fileID: 1157307521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,6 +936,11 @@ MonoBehaviour:
   runSpeed: 5
   jumpHeight: 10
   jumpdistance: 0.6
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  wallJumpDist: 0.36
+  wallJumpDistSide: 30
 --- !u!114 &1210756879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,7 +1063,7 @@ GameObject:
   - component: {fileID: 1888117010}
   - component: {fileID: 1888117009}
   - component: {fileID: 1888117008}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1281,7 +1286,7 @@ GameObject:
   - component: {fileID: 2137478961}
   - component: {fileID: 2137478960}
   - component: {fileID: 2137478959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
