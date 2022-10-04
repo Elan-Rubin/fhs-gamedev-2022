@@ -41,4 +41,11 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
+
+    void OnTriggerEnter2D (Collider2D col)
+    {
+    // jumpsRemaining++;
+        Destroy(col.gameObject);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
+    }
 }
