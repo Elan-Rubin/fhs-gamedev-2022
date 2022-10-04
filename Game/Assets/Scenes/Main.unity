@@ -518,6 +518,8 @@ MonoBehaviour:
   runSpeed: 5
   jumpHeight: 10
   jumpdistance: 0.6
+  wallJumpDist: 1
+  wallJumpDistSide: 2
 --- !u!114 &1210756878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 1210756877}
-  _playerHealth: {fileID: 1210756878}
 --- !u!1 &1563375249
 GameObject:
   m_ObjectHideFlags: 0

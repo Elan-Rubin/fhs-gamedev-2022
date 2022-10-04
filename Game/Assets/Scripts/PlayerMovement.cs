@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,21 +10,44 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rigidBody;
     public float jumpdistance = 1;
     bool canJump = true;
+
+    [SerializeField] private float wallJumpDist = 1f; // Distance from side of player
+    [SerializeField] private float wallJumpDistSide = 2f;
+    private float wallJumpSideDistNow = 0f;
+    private bool inAir;
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
+    void Update() {
+        wallJumpSideDistNow = 0f;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up,jumpdistance);
-        Debug.Log(hit.collider);
+        if (hit.collider == null) {
+            inAir = true;
+        }
+        else {
+            inAir = false;
+        }
+        // Debug.Log(hit.collider);
         if (UnityEngine.Input.GetAxisRaw("Vertical")>0.1f && hit.collider!=null && canJump == true)
         {
             StartCoroutine(JumpDelay());
             rigidBody.velocity += Vector2.up * jumpHeight;
         }
-        rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal"), rigidBody.velocity.y);
+
+        RaycastHit2D left = Physics2D.Raycast(transform.position, Vector2.left, wallJumpDist);
+        RaycastHit2D right = Physics2D.Raycast(transform.position, Vector2.right, wallJumpDist);
+
+        if ((left.collider != null || right.collider != null) && Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 && Input.GetButtonDown("Vertical") && canJump) {
+            StartCoroutine(JumpDelay());
+            rigidBody.velocity += Vector2.up * jumpHeight;
+            wallJumpSideDistNow = left.collider != null ? (wallJumpDistSide) : (wallJumpDistSide * -1);
+            Debug.Log(wallJumpSideDistNow);
+        }
+
+        rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal") + wallJumpSideDistNow, rigidBody.velocity.y);
+        //Debug.Log(rigidBody.velocity.x + "jhifsd");
         //rigidBody.velocity += Vector2.right * runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal");
     }
 
