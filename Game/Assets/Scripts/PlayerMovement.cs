@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float runSpeed = 5;
+    public float runSpeed;
+    public float baseRunSpeed = 3;
     public float jumpHeight = 5;
     Rigidbody2D rigidBody;
     public float jumpdistance = 1;//distance from player to ground for grounded
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        runSpeed = baseRunSpeed;
     }
 
     void Update()
@@ -22,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(JumpDelay());//Small cooldown for jump
             rigidBody.velocity += Vector2.up * jumpHeight;
+        }
+        // sprinting
+        if(Input.GetKeyDown(KeyCode.LeftShift)) {
+            runSpeed = baseRunSpeed * 2f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            runSpeed = baseRunSpeed;
         }
         rigidBody.velocity = new Vector2(runSpeed * UnityEngine.Input.GetAxisRaw("Horizontal"), rigidBody.velocity.y);//set velocity of rigidbody based 
     }                                                                                                                 //on horizontal input
