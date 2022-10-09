@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rigidBody;
-
-    public float raycastdistance;
-
-    public float movespeed;
-
-    private bool canswitchdirection = true;
-
+    [Header("Movement")]
+    [SerializeField] private float movementSpeed;
+    private bool canSwitchDirection = true;
+    [Header("Collision")] //for some reason this header isn't showing up in the editor? is this just on my end?
+    private Rigidbody2D rigidBody;
+    [SerializeField] float raycastDistance;
 
     void Start()
     {
@@ -20,21 +18,20 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        rigidBody.velocity = new Vector2(movespeed, rigidBody.velocity.y);//moves player right 
-        RaycastHit2D detectionraycast = Physics2D.Raycast(transform.position, Vector2.right + Vector2.down, raycastdistance); //shoots a raycast right and down
-        RaycastHit2D detectionraycast2 = Physics2D.Raycast(transform.position, Vector2.left + Vector2.down, raycastdistance); //shoots a raycast left and down
-        Debug.Log(detectionraycast.collider);
-        if ((detectionraycast.collider == null ||detectionraycast2.collider==null) && canswitchdirection)
+        rigidBody.velocity = new Vector2(movementSpeed, rigidBody.velocity.y);//moves player right 
+        RaycastHit2D detectionraycast = Physics2D.Raycast(transform.position, Vector2.right + Vector2.down, raycastDistance); //shoots a raycast right and down
+        RaycastHit2D detectionraycast2 = Physics2D.Raycast(transform.position, Vector2.left + Vector2.down, raycastDistance); //shoots a raycast left and down
+        //Debug.Log(detectionraycast.collider);
+        if ((detectionraycast.collider == null || detectionraycast2.collider == null) && canSwitchDirection)
         {
-            StartCoroutine(delayswitch());
-            movespeed = movespeed * -1;
+            StartCoroutine(DelaySwitch());
+            movementSpeed *= -1;
         }
     }
-    IEnumerator delayswitch()
+    IEnumerator DelaySwitch()
     {
-        canswitchdirection = false;
-       
+        canSwitchDirection = false;
         yield return new WaitForSeconds(1f);
-        canswitchdirection = true;
+        canSwitchDirection = true;
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
     [SerializeField]
-    private int _health; // backing field for Health (can mostly be ignored)
+    private int health; // backing field for Health (can mostly be ignored)
     public HealthBar bar; // health bar, if it exists
-    
+
     /// <summary>
     /// The current amount of health
     /// Automatically clamped between 0 and <see cref="maxHealth"/>
@@ -17,11 +17,11 @@ public class Damageable : MonoBehaviour
     {
         get
         {
-            return _health;
+            return health;
         }
         private set // don't let others modify healtpublic HealGameObject prefab;h directly, but anyone can read it
         {
-            _health = Mathf.Clamp(value, 0, maxHealth); // clamp health within 0 and max
+            health = Mathf.Clamp(value, 0, maxHealth); // clamp health within 0 and max
         }
     }
 

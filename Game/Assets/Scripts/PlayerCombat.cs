@@ -4,33 +4,30 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public float attackrate = 1.2f;
-    public float attackradius = 1f;
+    public float attackRate = 1.2f;
+    public float attackRadius = 1f;
     public LayerMask enemyLayer;
     // How long it takes to attack
     private float attacksSec;
     public int damage = 13;
 
     private float timeLastAttacked;
-    // Start is called before the first frame update
     void Start()
     {
-        attacksSec = 1 / attackrate;
+        attacksSec = 1 / attackRate;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && timeLastAttacked + attacksSec <= Time.time)
         {
             // attack animation when available
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackradius);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius);
             foreach (Collider2D hit in hits)
             {
                 if (hit.gameObject.layer == Mathf.Log(enemyLayer, 2)) // find out if hit an enemy
                 {
                     hit.GetComponent<Damageable>().TakeDamage(damage);
-                   // Debug.Log("hit");
+                    // Debug.Log("hit");
                 }
             }
             timeLastAttacked = Time.time;
@@ -39,6 +36,6 @@ public class PlayerCombat : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, attackradius);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }
