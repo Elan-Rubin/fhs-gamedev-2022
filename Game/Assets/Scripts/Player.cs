@@ -6,26 +6,25 @@ public class Player : MonoBehaviour
 {
     [Header("Player scripts")]
     [Tooltip("The player's movement script.")]
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerMovement playerMovement;
     [Space(5)]
 
-    private static Player _instance;
-    public static Player Instance { get { return _instance; } }
+    private static Player instance;
+    public static Player Instance { get { return instance; } }
     private void Awake()
     {
-        if (_instance != null && Instance != this)
-            Destroy(this.gameObject);
+        if (instance != null && Instance != this)
+            Destroy(gameObject);
         else
-            _instance = this;
+            instance = this;
     }
     void Start()
     {
-        if (_playerMovement == null) _playerMovement = GetComponent<PlayerMovement>();
-        Debug.Log("hi!");
+        if (playerMovement == null) playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        
+
     }
 }

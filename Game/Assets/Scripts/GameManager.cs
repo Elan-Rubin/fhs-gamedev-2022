@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // This is the Game Manager (as the name suggests)
-    // It is a special C# file in unity that, well, manages the game
-    private static GameManager _instance;
-    public static GameManager Instance { get { return _instance; } }
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
     private void Awake()
     {
-        if (_instance != null && Instance != this)
-            Destroy(this.gameObject);
+        if (instance != null && Instance != this)
+            Destroy(gameObject);
         else
-            _instance = this;
+            instance = this;
     }
 
     void Start()
@@ -23,6 +21,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
