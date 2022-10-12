@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         wallJumpSideDistNow = 0f;
-        RaycastHit2D groundedRaycast = Physics2D.Raycast(transform.position, -Vector2.up, jumpDistance);//grounded raycast to detect if on the ground TODO differentiate between player and ground so it doesn't hit player
+        RaycastHit2D groundedRaycast = Physics2D.Raycast(transform.position, -Vector2.up, jumpDistance);//grounded raycast to detect if on the ground
         //Debug.Log($"Canjump: {canJump} Raycast: {groundedRaycast.collider != null}");
-        if ((UnityEngine.Input.GetAxisRaw("Vertical") > 0.1f || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetButtonDown("Vertical") || Input.GetKeyDown(KeyCode.Space))
             && groundedRaycast.collider != null && canJump == true) //if vertical input, is grounded, and doesn't have jump cooldown
         {
             StartCoroutine(JumpDelay());//Small cooldown for jump
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if ((left.collider != null || right.collider != null) && /*Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 &&*/ Input.GetButtonDown("Vertical") && canJump)
+        if ((left.collider != null || right.collider != null) && /*Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 &&*/ (Input.GetButtonDown("Vertical") || Input.GetKeyDown(KeyCode.Space)) && canJump)
         {
             StartCoroutine(JumpDelay());
             rigidBody.velocity += Vector2.up * jumpHeight;
