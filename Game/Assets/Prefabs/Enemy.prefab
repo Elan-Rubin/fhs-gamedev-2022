@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  groundRaycastDistance: 1.5
+  groundRaycastDistance: 0.8
   wallRaycastDistance: 0.6
 --- !u!1 &142537094631283865
 GameObject:
