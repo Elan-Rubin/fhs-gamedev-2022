@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float movementSpeed;
     private bool canSwitchDirection = true;
     [Header("Collision")] //for some reason this header isn't showing up in the editor? is this just on my end? 
+                          //yeah why is that happening? I cant figure out how to fix
     private Rigidbody2D rigidBody;
     [SerializeField] float groundRaycastDistance;
     [SerializeField] float wallRaycastDistance;
@@ -37,5 +38,13 @@ public class Enemy : MonoBehaviour
         canSwitchDirection = false;
         yield return new WaitForSeconds(1f);
         canSwitchDirection = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x + wallRaycastDistance, transform.position.y));
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x - wallRaycastDistance, transform.position.y));
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)((Vector2.right + Vector2.down) * groundRaycastDistance));
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)((Vector2.left + Vector2.down) * groundRaycastDistance));
     }
 }
