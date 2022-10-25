@@ -17,20 +17,20 @@ public class WaterLevel : MonoBehaviour
 
     private void Update()
     {
-        waterAmount -= dryingRate * Time.deltaTime;
+        waterAmount -= dryingRate * Time.deltaTime; //Decrease water level by drying rate
         healthBarSlider.value = waterAmount / maxWaterAmount;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="waterdrop")
+        if (collision.GetComponentInParent<WaterDroplet>() != null) //Check if the collider's parent has WaterDroplet script(droplet detection)
         {
-            waterAmount += 15;
-            collision.gameObject.SetActive(false);
-            if (waterAmount > 100) 
+            WaterDroplet dropletScript = collision.GetComponentInParent<WaterDroplet>();
+            waterAmount += dropletScript.fillAmount;//increse water level by droplet's fillamount
+            collision.gameObject.SetActive(false); //set just FX and collider of droplet inactive(not parent w/ script_
+            if (waterAmount > 100) //can't add more than 100% water level
             {
                 waterAmount = 100;
             }
-
         }
     }
 }
