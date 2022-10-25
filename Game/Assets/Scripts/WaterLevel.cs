@@ -25,7 +25,12 @@ public class WaterLevel : MonoBehaviour
         if (collision.tag=="waterdrop")
         {
             waterAmount += 15;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            if (waterAmount > 100) 
+            {
+                waterAmount = 100;
+            }
+
         }
     }
 }
