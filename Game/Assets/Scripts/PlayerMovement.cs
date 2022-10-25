@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Side power of walljump")][SerializeField] private float wallJumpDistSide = 2f;
     private float wallJumpSideDistNow = 0f;
     private float sidewaysMomentum = 1f;
+    private float wallJumpTime;
     [Header("Collision")]
     [Tooltip("Editor ground layer")][SerializeField] private LayerMask ground;
     private int groundLayer; // log base 2 of ground (^) actually used
@@ -68,12 +69,21 @@ public class PlayerMovement : MonoBehaviour
             //rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); //
             rigidBody.velocity = Vector2.up * jumpHeight;
             wallJumpSideDistNow = left.collider != null ? (wallJumpDistSide) : (wallJumpDistSide * -1);
+            wallJumpTime = Time.time;
             //Debug.Log(wallJumpSideDistNow);
         }
-        if (wallJumpSideDistNow > 0) //Decreases momentum from wall rebound to 0 over time
+
+        float sidePower = Mathf.Exp(-2 * (Time.time - wallJumpTime));
+        if (sidePower < 0.1)
+            sidePower = 0;
+        if (wallJumpSideDistNow > 0)
+            wallJumpSideDistNow = wallJumpDistSide * sidePower;
+        if (wallJumpSideDistNow < 0)
+            wallJumpSideDistNow = wallJumpDistSide * sidePower * -1;
+        /*if (wallJumpSideDistNow > 0) //Decreases momentum from wall rebound to 0 over time
             wallJumpSideDistNow -= 0.10f; //TODO probably should make this decrease nonlinear
         if (wallJumpSideDistNow < 0)
-            wallJumpSideDistNow += 0.10f;
+            wallJumpSideDistNow += 0.10f;*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)//simple respawn system TODO:move to it's own script
