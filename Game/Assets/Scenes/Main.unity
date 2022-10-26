@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
-  baseRunSpeed: 3
+  baseRunSpeed: 5
   sprintSpeedMultiplier: 2
   jumpHeight: 10
   groundedDist: 0.75
@@ -2226,12 +2226,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1210756873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197ace0b56a225443a0bb374cef2f113, type: 3}
+  m_Script: {fileID: 11500000, guid: 37b353249bf8e7e4fb1efb5db0e9ceea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterAmount: 100
-  dryingRate: 3
-  healthBarSlider: {fileID: 269145257}
+  idleSprites:
+  - {fileID: 1082126202, guid: 5911d50a18c39e44895bb06af4f87839, type: 3}
+  - {fileID: 791769745, guid: 5911d50a18c39e44895bb06af4f87839, type: 3}
+  - {fileID: 1934124544, guid: 5911d50a18c39e44895bb06af4f87839, type: 3}
+  - {fileID: 742661954, guid: 5911d50a18c39e44895bb06af4f87839, type: 3}
+  rend: {fileID: 1563375251}
+  period: 0.1
 --- !u!4 &1238466116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214778688951250306, guid: 8e3519ecb04b88847b0e61ec105624b7, type: 3}
