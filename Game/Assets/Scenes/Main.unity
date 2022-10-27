@@ -2107,6 +2107,7 @@ GameObject:
   - component: {fileID: 1210756875}
   - component: {fileID: 1210756880}
   - component: {fileID: 1210756881}
+  - component: {fileID: 1210756882}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -2202,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4476975929a1f9b49a8ea728b92aabb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 1210756877}
 --- !u!114 &1210756880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2236,6 +2237,21 @@ MonoBehaviour:
   - {fileID: 742661954, guid: 5911d50a18c39e44895bb06af4f87839, type: 3}
   rend: {fileID: 1563375251}
   period: 0.1
+--- !u!114 &1210756882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210756873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197ace0b56a225443a0bb374cef2f113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterAmount: 100
+  dryingRate: 3
+  healthBarSlider: {fileID: 269145257}
 --- !u!4 &1238466116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214778688951250306, guid: 8e3519ecb04b88847b0e61ec105624b7, type: 3}
