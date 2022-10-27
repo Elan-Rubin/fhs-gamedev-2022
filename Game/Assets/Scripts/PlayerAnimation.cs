@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour {
     [SerializeField] private List<Sprite> idleSprites;
     private int idleNum;
     [SerializeField] private SpriteRenderer rend;
+    private Rigidbody2D rigidBody;
 
     [SerializeField] private float period = 1f;
     private float lastChanged;
@@ -14,13 +15,12 @@ public class PlayerAnimation : MonoBehaviour {
     public enum animationState {
         idle
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if ((Time.time - lastChanged) >= period)
@@ -36,5 +36,10 @@ public class PlayerAnimation : MonoBehaviour {
 
             lastChanged = Time.time;
         }
+
+        if (rigidBody.velocity.x > 0)//simple flip sprite based on velocity(to make it look the direction of movement)
+            rend.flipX = false;
+        else if (rigidBody.velocity.x < 0)
+            rend.flipX = true;
     }
 }
