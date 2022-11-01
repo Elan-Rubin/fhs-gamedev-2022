@@ -11,11 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseRunSpeed = 3;
     [SerializeField] private float sprintSpeedMultiplier = 2f;
     [Header("Jumping")]
-    //private bool inAir; // is this variable used?
     [SerializeField] private float jumpHeight = 5;
     [SerializeField] private float groundedDist = 1;
     [SerializeField] private float maxVertSpeed = 20;
     private bool canJump = true;
+    private bool isGrounded = false;
     [Header("Walljumping")]
     [Tooltip("Distance from side of player")] [SerializeField] private float wallJumpDist = 1f;
     [Tooltip("Side power of walljump")][SerializeField] private float wallJumpDistSide = 2f;
@@ -48,9 +48,10 @@ public class PlayerMovement : MonoBehaviour
     private void GroundJump()
     {
         RaycastHit2D groundedRaycast = Physics2D.Raycast(transform.position, -Vector2.up, groundedDist);//grounded raycast to detect if on the ground
+        isGrounded = groundedRaycast.collider != null;
         //Debug.Log($"Canjump: {canJump} Raycast: {groundedRaycast.collider != null}");
         if ((Input.GetButtonDown("Vertical") || Input.GetKeyDown(KeyCode.Space))
-            && groundedRaycast.collider != null && canJump == true) //if vertical input, is grounded, and doesn't have jump cooldown
+            && isGrounded && canJump == true) //if vertical input, is grounded, and doesn't have jump cooldown
         {
             StartCoroutine(JumpDelay());//Small cooldown for jump
             rigidBody.velocity += Vector2.up * jumpHeight;
@@ -74,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
 
         float sidePower = Mathf.Exp(-4 * (Time.time - wallJumpTime));
         if (sidePower < 0.2)
+            sidePower = 0;
+        if (isGrounded) //TODO make this fix better for jumping up the same wall instead of back and forth between two
             sidePower = 0;
         if (wallJumpSideDistNow > 0)
             wallJumpSideDistNow = wallJumpDistSide * sidePower;
