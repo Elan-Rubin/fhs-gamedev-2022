@@ -2344,8 +2344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
-  baseRunSpeed: 5
-  sprintSpeedMultiplier: 2
+  baseRunSpeed: 7
+  sprintSpeedMultiplier: 1.5
   jumpHeight: 10
   groundedDist: 0.75
   maxVertSpeed: 10
