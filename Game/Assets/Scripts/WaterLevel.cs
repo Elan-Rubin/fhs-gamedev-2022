@@ -8,6 +8,8 @@ public class WaterLevel : MonoBehaviour
     public float waterAmount = 100;
     public float dryingRate = 1;
     [SerializeField] Slider healthBarSlider;
+    [SerializeField] Image indicatorUi;
+    [SerializeField] List<Sprite> dropletSprites;
     private float maxWaterAmount;
 
     private void Start()
@@ -17,8 +19,10 @@ public class WaterLevel : MonoBehaviour
 
     private void Update()
     {
-        waterAmount -= dryingRate * Time.deltaTime; //Decrease water level by drying rate
+        if (waterAmount >= 0)
+            waterAmount -= dryingRate * Time.deltaTime; //Decrease water level by drying rate
         healthBarSlider.value = waterAmount / maxWaterAmount;
+        indicatorUi.sprite = dropletSprites[dropletSprites.Count - (int)((waterAmount/maxWaterAmount) * dropletSprites.Count) - 1];
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
