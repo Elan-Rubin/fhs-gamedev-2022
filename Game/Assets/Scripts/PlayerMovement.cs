@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -77,8 +76,8 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(wallJumpSideDistNow);
         }
 
-        float sidePower = Mathf.Exp(-2 * (Time.time - wallJumpTime));
-        if (sidePower < 0.1)
+        float sidePower = Mathf.Exp(-4 * (Time.time - wallJumpTime));
+        if (sidePower < 0.2)
             sidePower = 0;
         if (isGrounded) //TODO make this fix better for jumping up the same wall instead of back and forth between two
             sidePower = 0;
