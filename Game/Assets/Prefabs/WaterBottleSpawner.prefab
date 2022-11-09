@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4738697120787176799}
   - component: {fileID: 4738697120787176793}
   - component: {fileID: 4738697120787176798}
+  - component: {fileID: 6323283792474478810}
   m_Layer: 0
-  m_Name: WaterDroplet
+  m_Name: WaterBottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4738697120787176796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4738697121041738488}
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 1388355555
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78bfbc0ff7d1296419dc6de6dcdce6a4, type: 3}
-  m_Color: {r: 0.46855342, g: 0.7208212, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b559104d02ed2dd4599867bd4d0a9a70, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,15 +103,31 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &6323283792474478810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738697120787176796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d874dd6bafc9b7e42b1a9e05bc6d109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 0.2, z: 0}
+  period: 2
+  oscillateScale: 0
+  movementFactor: 0
 --- !u!1 &4738697121041738494
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +139,7 @@ GameObject:
   - component: {fileID: 4738697121041738488}
   - component: {fileID: 4738697121041738489}
   m_Layer: 0
-  m_Name: WaterDroplet
+  m_Name: WaterBottleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

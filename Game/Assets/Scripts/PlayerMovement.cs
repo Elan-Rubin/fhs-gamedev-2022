@@ -111,12 +111,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Dash()
+    IEnumerator Dash()//sets gravity to 0, turns on dash trail, adds horizontal velocity in the same way as wall jump
     {
         canDash = false;
         isDashing = true;
         float originalGravity = rigidBody.gravityScale;
         rigidBody.gravityScale = 0f;
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         wallJumpSideDistNow = rigidBody.velocity.x > 0 ? (wallJumpDistSide) * dashPowerMultiplier : (dashPowerMultiplier * wallJumpDistSide * -1);
         wallJumpTime = Time.time;
         dashTrail.emitting = true;
