@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Editor ground layer")][SerializeField] private LayerMask ground;
     private int groundLayer; // log base 2 of ground (^) actually used
     private Rigidbody2D rigidBody;
+
+    [SerializeField] private Transform camera;
     void Start()
     {
         groundLayer = (int)Mathf.Log(ground, 2);
@@ -54,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(JumpDelay());//Small cooldown for jump
             rigidBody.velocity += Vector2.up * jumpHeight;
+            camera.GetComponent<CameraShake>().cameraShake();
         }
     }
 
