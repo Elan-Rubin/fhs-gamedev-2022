@@ -11,6 +11,7 @@ public class WaterLevel : MonoBehaviour
     [SerializeField] Image indicatorUi;
     [SerializeField] List<Sprite> dropletSprites;
     private float maxWaterAmount;
+    private bool isInLake = false;
 
     private void Start()
     {
@@ -22,7 +23,17 @@ public class WaterLevel : MonoBehaviour
         if (waterAmount >= 0)
             waterAmount -= dryingRate * Time.deltaTime; //Decrease water level by drying rate
         healthBarSlider.value = waterAmount / maxWaterAmount;
-        indicatorUi.sprite = dropletSprites[dropletSprites.Count - (int)((waterAmount/maxWaterAmount) * dropletSprites.Count) - 1];
+        try
+        {
+            indicatorUi.sprite = dropletSprites[dropletSprites.Count - (int)((waterAmount / maxWaterAmount) * dropletSprites.Count) - 1];
+        }
+        catch { }
+        if (isInLake)
+        {
+            waterAmount += 0.5f;
+            if (waterAmount > 100) //can't add more than 100% water level
+                waterAmount = 100;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,6 +46,18 @@ public class WaterLevel : MonoBehaviour
             {
                 waterAmount = 100;
             }
+        }
+        if (collision.GetComponent<Lake>() != null)
+        {
+            isInLake = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Lake>() != null)
+        {
+            isInLake = false;
         }
     }
 }
