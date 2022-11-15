@@ -65,11 +65,11 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D groundedRaycast = Physics2D.Raycast(transform.position, -Vector2.up, groundedDist);//grounded raycast to detect if on the ground
         isGrounded = groundedRaycast.collider != null;
         //Debug.Log($"Canjump: {canJump} Raycast: {groundedRaycast.collider != null}");
-        if ((Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0) || Input.GetKeyDown(KeyCode.Space) && isGrounded && canJump == true) //if vertical input, is grounded, and doesn't have jump cooldown
+        if (((Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0) || Input.GetKeyDown(KeyCode.Space)) && isGrounded && canJump == true) //if vertical input, is grounded, and doesn't have jump cooldown
         {
             StartCoroutine(JumpDelay());//Small cooldown for jump
             rigidBody.velocity += Vector2.up * jumpHeight;
-            camera.GetComponent<CameraShake>().cameraShake();
+            // camera.GetComponent<CameraShake>().cameraShake();
         }
     }
 
