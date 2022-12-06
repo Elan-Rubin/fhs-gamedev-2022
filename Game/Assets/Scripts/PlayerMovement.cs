@@ -35,12 +35,15 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Editor ground layer")][SerializeField] private LayerMask ground;
     private int groundLayer; // log base 2 of ground (^) actually used
     private Rigidbody2D rigidBody;
+    private WaterLevel waterLevel;
+
 
     [SerializeField] private Transform camera;
     void Start()
     {
         groundLayer = (int)Mathf.Log(ground, 2);
         rigidBody = GetComponent<Rigidbody2D>();
+        waterLevel = GetComponent<WaterLevel>();
         //runSpeed = baseRunSpeed;
     }
 
@@ -107,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Respawn"))
         {
-            transform.position = new Vector2(0, 0);
+            waterLevel.waterAmount = 0;
         }
     }
 
