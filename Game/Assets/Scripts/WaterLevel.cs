@@ -30,7 +30,7 @@ public class WaterLevel : MonoBehaviour
         catch { }
         if (isInLake)
         {
-            waterAmount += 0.5f;
+            waterAmount += Time.deltaTime * 30f;
             if (waterAmount > 100) //can't add more than 100% water level
                 waterAmount = 100;
         }
@@ -57,7 +57,6 @@ public class WaterLevel : MonoBehaviour
     {
         if (collision.GetComponent<Lake>() != null)
         {
-            isInLake = false;
-        }
+            isInLake = false;        }
     }
 }
