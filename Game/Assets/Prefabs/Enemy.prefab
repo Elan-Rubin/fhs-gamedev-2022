@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 142537092582387635}
   m_Layer: 2
   m_Name: Hitbox
-  m_TagString: Respawn
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

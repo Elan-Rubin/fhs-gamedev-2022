@@ -10,13 +10,12 @@ public class Death : MonoBehaviour
     [SerializeField] GameObject DeathScreen;
     [SerializeField] TextMeshProUGUI DeathTextUI;
     [SerializeField] string[] DeathTextList;
-    // Start is called before the first frame update
+
     void Start()
     {
         waterLevel = GetComponent<WaterLevel>();
     }
 
-    // Update is called once per frame
     void Update()
     {
        if (waterLevel.waterAmount <= 0)
